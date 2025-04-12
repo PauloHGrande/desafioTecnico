@@ -33,3 +33,28 @@ feita via mensagens utilizando um broker (`RabbitMQ, Kafka, etc.`).
 - **Comunicação Assíncrona**: Uso correto do broker de mensagens para 
 comunicação entre serviços. 
 - **Banco de Dados**: Modelagem adequada e operações com o banco de dados. 
+
+----------------------------------------------------------------------------------------------------
+<br>
+Para o Desafio foi utilizado o Banco H2 e RabbitMQ.<br>
+Para o Micro Serviço de Order ele cadastra o produto, busca o produto e fica de ouvinte do pagamento.<br>
+Foi Criado 2 API, uma de criação do produto e outra para buscar todos os produtos.<br>
+Segue abaixo o Exemplo do EndPoint.<br><br>
+<b>POST</b>: http://localhost:8081/orders<br>
+{
+    "product": "Pendriver",
+    "price": "20",
+    "status":"Create"
+}<br><br>
+<b>GET</b>:http://localhost:8081/orders<br><br>
+Para o Micro Serviço de Pagamento, criado uma API de pagamento, onde é passado o ID do pagamento e seu 
+novo Status.<br><br>
+<b>POST</b>:http://localhost:8082/payments<br>
+{
+    "id": "ea18564e-09dc-47e8-a767-ade533dfd6db",
+    "product": "Pendriver",
+    "price": "20",
+    "status":"Aprovado"
+}
+
+
